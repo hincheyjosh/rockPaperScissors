@@ -10,17 +10,8 @@ function computerPlay() {
     return pick
 }
 
-function playerInput() {
-    let input = prompt("Please choose Rock, Paper, or Scissors.").toLowerCase()
-
-    if (input === 'rock' || input === 'paper' || input === 'scissors') {
-        return input
-    } else {
-        return playerInput()
-    }
-}
-
-function calcWinner(computerHand, playerHand) {
+function calcWinner(playerHand) {
+    let computerHand = computerPlay()
     let winner = null
     if (computerHand === playerHand) {
         winner =  'tie'
@@ -43,9 +34,7 @@ function calcWinner(computerHand, playerHand) {
             winner = 'computer'
         }
     }
-    alert(`The computer picked ${computerHand} and you picked ${playerHand}.  ${winner === 'tie' ? 
-        'The round ended in a tie!' : winner === 'computer' ? 'The computer won this round!' : 
-        'You won this round.'}`)
+    return winner
 }
 
 function playGame() {
@@ -64,3 +53,27 @@ function playGame() {
     return playerScore === computerScore ? alert('Tie'): playerScore > computerScore ?
             alert('You Win!'): alert("Computer wins!");
 }
+
+function switchView (e) {
+    let startView = document.querySelector(".start-view")
+    let gameView = document.querySelector(".game-view")
+    startView.style.display = "none"
+    gameView.style.display = "flex"
+}
+
+function playRound(id) {
+    console.log(id)
+    let winner = calcWinner(id)
+    let alert = document.querySelector(".alert")
+    alert.innerHTML = winner
+}
+
+document.querySelector(".start-btn").addEventListener('click', switchView)
+
+const images = document.querySelectorAll("img")
+
+images.forEach(image => {
+    image.addEventListener("click", () => {
+        playRound(image.id)
+    })
+})

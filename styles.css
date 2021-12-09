@@ -1,16 +1,48 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
 
+img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
 .container {
     display: flex;
     flex-direction: column;
     background-color: #13293d;
     font-family: 'roboto';
     color: white;
+    height: 100%;
+}
+
+.game-view {
+    display: none;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-view {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #495F7A;
+}
+
+.image-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
 }
 
 .title {
- display: flex;
- justify-content: center;
- background-color: #16324F;
+    display: flex;
+    justify-content: center;
+    background-color: #16324F;
 }
 
 .score-board {
@@ -28,17 +60,8 @@ p {
     background-color: #495F7A;
 }
 
-.start-view {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    background-color: #495F7A;
-    height: 100%;
-}
 
 .start-btn {
-    margin: 400px 400px;
     width: 400px;
     height: 200px;
     background-color: #AEB9CF;
@@ -51,7 +74,7 @@ p {
 }
 
 footer {
-    background-color: #AEB9CF;
+    background-color: #16324F;
     display: flex;
     justify-content: center;
     padding: 30px;
