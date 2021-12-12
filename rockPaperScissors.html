@@ -1,79 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel='stylesheet' href="styles.css"></link>
+    <script src="js-file.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-        const hands = ['rock', 'paper', 'scissors']
-
-
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max)
-        }
-
-        function computerPlay() {
-            let pick =  hands[getRandomInt(3)]
-            return pick
-        }
-
-        function playerInput() {
-            let input = prompt("Please choose Rock, Paper, or Scissors.").toLowerCase()
-
-            if (input === 'rock' || input === 'paper' || input === 'scissors') {
-                return input
-            } else {
-                return playerInput()
-            }
-        }
-
-        function calcWinner(computerHand, playerHand) {
-            let winner = null
-            if (computerHand === playerHand) {
-                winner =  'tie'
-            } else if (computerHand === 'rock') {
-                if (playerHand === 'paper') {
-                    winner = 'player'
-                } else {
-                    winner = 'computer'
-                }
-            } else if (computerHand === 'paper') {
-                if (playerHand === 'scissors') {
-                    winner = 'player'
-                } else {
-                    winner = 'computer'
-                }
-            } else if (computerHand === 'scissors') {
-                if (playerHand === 'rock') {
-                    winner = 'player'
-                } else {
-                    winner = 'computer'
-                }
-            }
-            alert(`The computer picked ${computerHand} and you picked ${playerHand}.  ${winner === 'tie' ? 
-                'The round ended in a tie!' : winner === 'computer' ? 'The computer won this round!' : 
-                'You won this round.'}`)
-        }
-
-        function playGame() {
-            let playerScore = 0
-            let computerScore = 0
-            for (let i = 0; i < 5; i++) {
-                let winner = calcWinner(computerPlay(), playerInput())
-                if (winner === 'tie') {
-                    continue
-                } else if (winner === 'player') {
-                    playerScore++
-                } else {
-                    computerScore++
-                }
-            }
-            return playerScore === computerScore ? alert('Tie'): playerScore > computerScore ?
-                 alert('You Win!'): alert("Computer wins!")
-        }
-    </script>
-</body>
+    <div class="container">
+        <div class="title"><h1>Rock, Paper, Scissors</h1></div>
+        <div class="start-view">
+            <button class="start-btn">Start Game</button>
+        </div>
+        <div class="game-view">
+            <h1 class="round">Round 1</h1>
+            <div class="score-board">
+                <div class="score">
+                    <h2>Your Score</h2>
+                    <h2 id="player-score">0</h2>
+                </div>
+                <div class="score">
+                    <h2>Draws</h2>
+                    <h2 id="draws-score">0</h2>
+                </div>
+                <div class="score">
+                    <h2>Computer Score</h2>
+                    <h2 id="comp-score">0</h2>
+                </div>
+            </div>
+            <div class="image-row">
+                <button id="rock"><img src="images/rock.jpg" alt="Rock"></button>
+                <button id="paper" ><img src="images/paper.jpg" alt="Paper"></button>
+                <button id="scissors"><img src="images/scissors.jpg" alt="Scissors"></button>
+            </div>
+        </div>
+        <div class="game-over-view">
+            <div class="alert">
+            </div>
+            <h1>Game Over!</h1>
+            <button onclick="playAgain()" class="play-again-btn">Play again?</button>
+        </div>
+        <footer>
+            Made with &#128420; by Joshua Hinchey.
+        </footer>
+    </div>
+    </body>
 </html>
