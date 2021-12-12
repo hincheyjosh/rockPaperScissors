@@ -96,7 +96,7 @@ function game() {
                 drawScoreBoard.textContent = draws
             }
             roundHeader.textContent = `Round ${rounds}`
-            if (rounds === 5 ) {
+            if (rounds === 6) {
                 if (playerScore > compScore) {
                     alert.textContent = "You won!"
                 } else if (compScore > playerScore) {
