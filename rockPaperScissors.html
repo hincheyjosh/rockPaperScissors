@@ -10,28 +10,37 @@
 </head>
 <body>
     <div class="container">
-        <div class="title"><h1>Man Vs. Machine!</h1></div>
-        <div class="score-board">
-            <div class="human-score">
-                <h2>Human Score</h2>
-                <p id="man-score"><h2>0</h2></p>
-            </div>
-            <div class="computer-score">
-                <h2>Computer Score</h2>
-                <p id="comp-score"><h2>0</h2></p>
-            </div>
-        </div>
-        <div class="alert">
-        </div>
+        <div class="title"><h1>Rock, Paper, Scissors</h1></div>
         <div class="start-view">
             <button class="start-btn">Start Game</button>
         </div>
         <div class="game-view">
-            <div class="image-row">
-                <img id="rock" src="images/rock.jpg" alt="Rock">
-                <img id="paper" src="images/paper.jpg" alt="Paper">
-                <img id="scissors" src="images/scissors.jpg" alt="Scissors">
+            <h1 class="round">Round 1</h1>
+            <div class="score-board">
+                <div class="score">
+                    <h2>Your Score</h2>
+                    <h2 id="player-score">0</h2>
+                </div>
+                <div class="score">
+                    <h2>Draws</h2>
+                    <h2 id="draws-score">0</h2>
+                </div>
+                <div class="score">
+                    <h2>Computer Score</h2>
+                    <h2 id="comp-score">0</h2>
+                </div>
             </div>
+            <div class="image-row">
+                <button id="rock"><img src="images/rock.jpg" alt="Rock"></button>
+                <button id="paper" ><img src="images/paper.jpg" alt="Paper"></button>
+                <button id="scissors"><img src="images/scissors.jpg" alt="Scissors"></button>
+            </div>
+        </div>
+        <div class="game-over-view">
+            <div class="alert">
+            </div>
+            <h1>Game Over!</h1>
+            <button onclick="playAgain()" class="play-again-btn">Play again?</button>
         </div>
         <footer>
             Made with &#128420; by Joshua Hinchey.

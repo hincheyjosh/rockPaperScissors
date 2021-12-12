@@ -37,43 +37,77 @@ function calcWinner(playerHand) {
     return winner
 }
 
-function playGame() {
-    let playerScore = 0
-    let computerScore = 0
-    for (let i = 0; i < 5; i++) {
-        let winner = calcWinner(computerPlay(), playerInput())
-        if (winner === 'tie') {
-            continue
-        } else if (winner === 'player') {
-            playerScore++
-        } else {
-            computerScore++
-        }
-    }
-    return playerScore === computerScore ? alert('Tie'): playerScore > computerScore ?
-            alert('You Win!'): alert("Computer wins!");
-}
-
-function switchView (e) {
+function startGame (e) {
     let startView = document.querySelector(".start-view")
     let gameView = document.querySelector(".game-view")
+    let endView = document.querySelector(".game-over-view")
     startView.style.display = "none"
     gameView.style.display = "flex"
+    endView.style.display = "none"
+    game()
 }
 
-function playRound(id) {
-    console.log(id)
-    let winner = calcWinner(id)
-    let alert = document.querySelector(".alert")
-    alert.innerHTML = winner
+function checkWinner() {
+    if (playerScore === 5 || compScore === 5) {
+        return true
+    }
+    return false
 }
 
-document.querySelector(".start-btn").addEventListener('click', switchView)
+function gameOver() {
+    let gameView = document.querySelector(".game-view")
+    let endgame = document.querySelector(".game-over-view")
+    gameView.style.display = "none"
+    endgame.style.display = "flex"
+}
 
-const images = document.querySelectorAll("img")
+function playAgain() {
+    window.location.reload();
+}
 
-images.forEach(image => {
-    image.addEventListener("click", () => {
-        playRound(image.id)
+function game() {
+    let playerScore = 0
+    let compScore = 0
+    let draws = 0
+    let rounds = 1
+    const rockBtn = document.querySelector("#rock")
+    const paperBtn = document.querySelector("#paper")
+    const scissorsBtn = document.querySelector("#scissors")
+    const compScoreBoard = document.querySelector("#comp-score")
+    const playerScoreBoard = document.querySelector("#player-score")
+    const drawScoreBoard = document.querySelector("#draws-score")
+    const roundHeader = document.querySelector(".round")
+    const alert = document.querySelector(".alert")
+    playOptions = [rockBtn, paperBtn, scissorsBtn]
+    playOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            winner = calcWinner(this.id)
+            if (winner === 'computer') {
+                compScore++
+                rounds++
+                compScoreBoard.textContent = compScore
+            } else if (winner === 'player') {
+                playerScore++
+                playerScoreBoard.textContent = playerScore
+                rounds++
+            } else {
+                draws++
+                rounds++
+                drawScoreBoard.textContent = draws
+            }
+            roundHeader.textContent = `Round ${rounds}`
+            if (rounds === 5 ) {
+                if (playerScore > compScore) {
+                    alert.textContent = "You won!"
+                } else if (compScore > playerScore) {
+                    alert.textContent = "The computer won!"
+                } else {
+                    alert.textContent = "Tie!"
+                }
+                gameOver()
+            }
+        })
     })
-})
+}
+
+document.querySelector(".start-btn").addEventListener('click', startGame)

@@ -1,6 +1,8 @@
 body {
     margin: 0;
     height: 100vh;
+    font-family: Courier, monospace, sans-serif;
+    background-color: #f8f8ff;
 }
 
 img {
@@ -11,9 +13,7 @@ img {
 .container {
     display: flex;
     flex-direction: column;
-    background-color: #13293d;
-    font-family: 'roboto';
-    color: white;
+    color: black;
     height: 100%;
 }
 
@@ -22,6 +22,7 @@ img {
     flex: 1;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .start-view {
@@ -29,7 +30,6 @@ img {
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: #495F7A;
 }
 
 .image-row {
@@ -37,19 +37,21 @@ img {
     flex-direction: row;
     justify-content: space-between;
     gap: 50px;
+    margin-top: 50px;
 }
 
 .title {
     display: flex;
     justify-content: center;
-    background-color: #16324F;
+    border-bottom: 2px solid black;
 }
 
 .score-board {
     display: flex;
-    justify-content: space-evenly;
-    background-color: #2F4964;
+    justify-content: space-between;
     text-align: center;
+    flex-direction: row;
+    gap: 100px;
 }
 
 p {
@@ -57,26 +59,56 @@ p {
 }
 
 .alert {
-    background-color: #495F7A;
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
 }
 
+.game-over-view {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
 
 .start-btn {
+    font-family: Courier, monospace, sans-serif;
     width: 400px;
     height: 200px;
-    background-color: #AEB9CF;
-    border-radius: 10px;
-    color: white;
+    background: linear-gradient(145deg, #dfdfe6, #ffffff);
+    border: none;
+    color: black;
+    border-radius: 50px;
     font-size: x-large;
-    border: 2px solid #16324F;
-    box-shadow: 10px 10px 5px #2F4964;
     cursor: pointer;
+    box-shadow: 20px 20px 60px #d3d3d9,
+                -20px -20px 60px #ffffff;
 }
 
 footer {
-    background-color: #16324F;
+    background-color: #f8f8ff;
     display: flex;
     justify-content: center;
     padding: 30px;
-    color: white;
+    color: black;
+}
+
+.shadow {
+    box-shadow: 20px 20px 60px #d3d3d9,
+                -20px -20px 60px #ffffff;
+}
+
+.play-again-btn {
+    font-family: Courier, monospace, sans-serif;
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(145deg, #dfdfe6, #ffffff);
+    border: none;
+    color: black;
+    border-radius: 50px;
+    font-size: x-large;
+    cursor: pointer;
+    box-shadow: 20px 20px 60px #d3d3d9,
+                -20px -20px 60px #ffffff;
 }
